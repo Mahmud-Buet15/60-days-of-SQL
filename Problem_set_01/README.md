@@ -16,4 +16,4 @@
 10.	Query the sum of the populations for all Japanese cities in CITY. The COUNTRYCODE for Japan is JPN.
 11.	Query the difference between the maximum and minimum populations in CITY.
 
-## RDBMS- MySQL
+### RDBMS- MySQL
