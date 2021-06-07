@@ -1,4 +1,4 @@
-# Problem Set 01
+# Problem Set 02
 
 # Schema
 ![alt text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_02/dataset/schema.png)
