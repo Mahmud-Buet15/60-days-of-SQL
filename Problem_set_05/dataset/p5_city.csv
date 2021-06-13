@@ -1,0 +1,79 @@
+ID,NAME,COUNTRYCODE,DISTRICT,POPULATION
+4,Mazar-e-Sharif,AFG,Balkh,127800
+11,Groningen,NLD,Groningen,172701
+80,Merlo,ARG,Buenos Aires,463846
+89,San Isidro,ARG,Buenos Aires,306341
+91,Malvinas Argentinas,ARG,Buenos Aires,290335
+124,San Rafael,ARG,Mendoza,94651
+128,Vanadzor,ARM,Lori,172700
+141,Geelong,AUS,Victoria,125382
+142,Townsville,AUS,Queensland,109914
+143,Cairns,AUS,Queensland,92273
+146,Sumqayit,AZE,Sumqayit,283000
+150,Dhaka,BGD,Dhaka,3612850
+151,Chittagong,BGD,Chittagong,1392860
+162,Dinajpur,BGD,Rajshahi,127815
+166,Tangail,BGD,Dhaka,106004
+168,Pabna,BGD,Rajshahi,103277
+304,Petrolina,BRA,Pernambuco,210540
+321,Rio Grande,BRA,Rio Grande do Sul,182222
+379,Palmas,BRA,Tocantins,121919
+431,Angra dos Reis,BRA,Rio de Janeiro,96864
+473,Stoke-on-Trent,GBR,England,252000
+478,Aberdeen,GBR,Scotland,213070
+479,Northampton,GBR,England,196000
+484,Luton,GBR,England,183000
+510,Slough,GBR,England,112000
+521,Colchester,GBR,England,96063
+526,Birkenhead,GBR,England,93087
+532,Maidstone,GBR,England,90878
+540,Plovdiv,BGR,Plovdiv,342584
+575,Punta Arenas,CHL,Magallanes,125631
+628,Qina,EGY,Qina,171275
+633,Warraq al-Arab,EGY,Giza,127108
+657,Zaragoza,ESP,Aragonia,603367
+665,Vigo,ESP,Galicia,283670
+673,Badalona,ESP,Katalonia,209635
+686,Terrassa,ESP,Katalonia,168695
+720,Kempton Park,ZAF,Gauteng,442633
+721,Alberton,ZAF,Gauteng,410102
+732,Klerksdorp,ZAF,North West,261911
+738,Uitenhage,ZAF,Eastern Cape,192120
+743,Brakpan,ZAF,Gauteng,171363
+784,Iloilo,PHL,Western Visayas,365820
+789,Iligan,PHL,Central Mindanao,285061
+805,San Pablo,PHL,Southern Tagalog,207927
+811,Binangonan,PHL,Southern Tagalog,187691
+820,Legazpi,PHL,Bicol,157010
+858,Hagonoy,PHL,Central Luzon,111425
+865,San Jose,PHL,Central Luzon,108254
+886,Bislig,PHL,Caraga,97860
+887,Talavera,PHL,Central Luzon,97329
+892,Capas,PHL,Central Luzon,95219
+902,Libreville,GAB,Estuaire,419000
+906,Kutaisi,GEO,Imereti,240900
+909,Sohumi,GEO,Abhasia [Aphazeti],111700
+931,Delmas,HTI,Ouest,240429
+939,Jakarta,IDN,Jakarta Raya,9604900
+941,Bandung,IDN,West Java,2429000
+967,Ciputat,IDN,West Java,270800
+981,Karawang,IDN,West Java,145000
+997,Cianjur,IDN,West Java,114300
+1002,Citeureup,IDN,West Java,105100
+1004,Klaten,IDN,Central Java,103300
+1021,Sawangan,IDN,West Java,91100
+1032,Nagpur,IND,Maharashtra,1624752
+1045,Patna,IND,Bihar,917243
+1046,Srinagar,IND,Jammu and Kashmir,892506
+1060,Hubli-Dharwad,IND,Karnataka,648298
+1063,Bareilly,IND,Uttar Pradesh,587211
+1092,Bhilai,IND,Chhatisgarh,386159
+1099,Jamnagar,IND,Gujarat,341637
+1119,Davangere,IND,Karnataka,266082
+1122,Bellary,IND,Karnataka,245391
+1126,Muzaffarpur,IND,Bihar,241107
+1163,Bally,IND,West Bengali,184474
+1164,Bhilwara,IND,Rajasthan,183965
+1195,Arrah (Ara),IND,Bihar,157082
+1201,Cuddalore,IND,Tamil Nadu,153086
+1203,Dhanbad,IND,Jharkhand,151789
