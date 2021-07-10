@@ -9,6 +9,10 @@
 ![alt text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_08/dataset/details_2.png)
 ![alt text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_08/dataset/details_3.png)
 
+Problem source: [SQLzoo](https://sqlzoo.net/wiki/More_JOIN_operations)
+
+Full Solution: [Link](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_08/Problem_set_08.sql)
+
 ### QUERIES:
 1.	List the films where the yr is 1962
 2.	When was Citizen Kane released?
