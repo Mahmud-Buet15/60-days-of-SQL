@@ -5,6 +5,10 @@
 
 Note: **stops.id** and **route.stop** are matching key columns.
 
+Problem source: [SQLzoo](https://sqlzoo.net/wiki/Self_join)
+
+Full Solution: [Notebook](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_10/Problem_set_10.ipynb)
+
 ### QUERIES:
 1. How many stops are in the database?
 2. Find the id value for the stop 'Craiglockhart'
