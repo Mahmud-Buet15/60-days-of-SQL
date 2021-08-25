@@ -1,7 +1,7 @@
 # Problem Set 06 
 # Case Study #1 - [Danny's Diner](https://8weeksqlchallenge.com/case-study-1/)
 # Entity Relationship Diagram
-![alt text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_06/dataset/schema.png)
+![alt text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_06(%238_week_sql_challenge)/dataset/schema.png)
 
 Full Solution: [Notebook](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_06/Problem_set_06.ipynb)
 
