@@ -3,7 +3,6 @@
 
 
 # Part E Solutions - SQL Window Functions
-### RDBMS - MySQL
 
 #### **Q1. Create a running total of standard_qty.**
 ```sql
