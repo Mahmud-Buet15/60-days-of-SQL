@@ -3,7 +3,7 @@
 # Entity Relationship Diagram
 ![alt text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_06(%238_week_sql_challenge)/dataset/schema.png)
 
-Full Solution: [Notebook](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_06/Problem_set_06.ipynb)
+Full Solution: [Notebook](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_06(%238_week_sql_challenge)/Problem_set_06.ipynb)
 
 
 ### QUERIES:
@@ -18,7 +18,7 @@ Full Solution: [Notebook](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/m
 9.	If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 10.	In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
 11.
-![alt text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_06/dataset/Question_2.png)
+![alt text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_06(%238_week_sql_challenge)/dataset/Question_2.png)
 
 ### RDBMS- MySQL
 
@@ -167,7 +167,7 @@ ORDER BY 1;
 
 
 ### **Q11.**
-![alt text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_06/dataset/Question_2.png)
+![alt text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_06(%238_week_sql_challenge)/dataset/Question_2.png)
 ```sql
 SELECT Temp.customer_id,Temp.order_date,menu.product_name,menu.price,
     CASE
