@@ -6,6 +6,7 @@
 
 Problem source: [Udacity - SQL for Data Analysis](https://classroom.udacity.com/courses/ud198)
 
+### RDBMS- MySQL
 
 ### Problems:
 #### Part A - SQL Joins  &emsp; &emsp; &emsp; &emsp; &emsp; [Solution](https://github.com/Mahmud-Buet15/60-days-of-SQL/tree/main/Problem_set_12/part_A_joins)
