@@ -100,23 +100,6 @@ LIMIT 1
 
 -- 7. For each customer, how many delivered pizzas had at least 1 change and how many had no changes?
 
-SELECT 
-       CASE
-         WHEN exclusions REGEXP '[0-9]' OR extras REGEXP '[0-9]' THEN 'has change'
-         ELSE 'no change'
-	   END AS change_or_not,
-       COUNT(*) AS pizza_count
-FROM
-    customer_orders c
-        JOIN
-    runner_orders ro ON c.order_id = ro.order_id
-WHERE
-    pickup_time <> 'null'
-    AND extras <> 'null' 
-GROUP BY 1
-ORDER BY 2 DESC
-;
-
 
 WITH CTE
 AS (SELECT customer_id,
@@ -140,8 +123,6 @@ SELECT customer_id,
 	   END) AS no_changes
 FROM CTE
 GROUP BY 1
-
-
 ;
 
 

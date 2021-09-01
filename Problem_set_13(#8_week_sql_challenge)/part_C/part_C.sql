@@ -120,13 +120,13 @@ WHERE topping_id= (SELECT exclusions_mod
                    FROM CTE3)
 ;
 
-SELECT exclusions,
-       CHAR_LENGTH(exclusions),
-       CHAR_LENGTH(REPLACE(exclusions,',','')),
-       CHAR_LENGTH(exclusions)-CHAR_LENGTH(REPLACE(exclusions,',',''))
-FROM customer_orders
-WHERE exclusions REGEXP '[0-9]+' 
-;
+-- SELECT exclusions,
+--        CHAR_LENGTH(exclusions),
+--        CHAR_LENGTH(REPLACE(exclusions,',','')),
+--        CHAR_LENGTH(exclusions)-CHAR_LENGTH(REPLACE(exclusions,',',''))
+-- FROM customer_orders
+-- WHERE exclusions REGEXP '[0-9]+' 
+-- ;
 
 
 
