@@ -4,7 +4,7 @@
 ![alt text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_13(%238_week_sql_challenge)/dataset/pizza_runner.png)
 
 ### Problems:
-#### Part A - Pizza Metrics
+#### Part A - Pizza Metrics   &emsp; &emsp; &emsp; &emsp; &emsp; [Solution](https://github.com/Mahmud-Buet15/60-days-of-SQL/tree/main/Problem_set_13(%238_week_sql_challenge)/part_A)
 1. How many pizzas were ordered?
 2. How many unique customer orders were made?
 3. How many successful orders were delivered by each runner?
@@ -16,7 +16,7 @@
 9. What was the total volume of pizzas ordered for each hour of the day?
 10. What was the volume of orders for each day of the week?
 
-#### Part B. Runner and Customer Experience
+#### Part B. Runner and Customer Experience   &emsp; &emsp; &emsp; &emsp; &emsp; [Solution](https://github.com/Mahmud-Buet15/60-days-of-SQL/tree/main/Problem_set_13(%238_week_sql_challenge)/part_B)
 1. How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)
 2. What was the average time in minutes it took for each runner to arrive at the Pizza Runner HQ to pickup the order?
 3. Is there any relationship between the number of pizzas and how long the order takes to prepare?
@@ -25,7 +25,7 @@
 6. What was the average speed for each runner for each delivery and do you notice any trend for these values?
 7. What is the successful delivery percentage for each runner?
 
-#### Part C. Ingredient Optimisation
+#### Part C. Ingredient Optimisation   &emsp; &emsp; &emsp; &emsp; &emsp; [Solution](https://github.com/Mahmud-Buet15/60-days-of-SQL/tree/main/Problem_set_13(%238_week_sql_challenge)/part_C)
 1. What are the standard ingredients for each pizza?
 2. What was the most commonly added extra?
 3. What was the most common exclusion?
@@ -38,7 +38,7 @@
 - For example: "Meat Lovers: 2xBacon, Beef, ... , Salami"
 6. What is the total quantity of each ingredient used in all delivered pizzas sorted by most frequent first?
 
-#### Part D. Pricing and Ratings
+#### Part D. Pricing and Ratings   &emsp; &emsp; &emsp; &emsp; &emsp; [Solution](https://github.com/Mahmud-Buet15/60-days-of-SQL/tree/main/Problem_set_13(%238_week_sql_challenge)/part_D)
 1. If a Meat Lovers pizza costs $12 and Vegetarian costs $10 and there were no charges for changes - how much money has Pizza Runner made so far if there are no delivery fees?
 2. What if there was an additional $1 charge for any pizza extras?
 - Add cheese is $1 extra
