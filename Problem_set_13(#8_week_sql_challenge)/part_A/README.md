@@ -2,7 +2,8 @@
 ![alt text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_13(%238_week_sql_challenge)/dataset/pizza_runner.png)
 
 
-# Part A Solutions - SQL Joins
+# Part A Solutions
+### RDBMS- MySQL
 
 #### **Q1. How many pizzas were ordered?**
 ```sql
