@@ -32,6 +32,7 @@ The Foodie-Fi team wants you to create a new payments table for the year 2020 th
 * once a customer churns they will no longer make payments.
 
 Example outputs for this table might look like the following:
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/foodie-fi.PNG)
 
 
 #### Part D. Outside The Box Questions   &emsp; &emsp; &emsp; &emsp; &emsp; [Solution](https://github.com/Mahmud-Buet15/60-days-of-SQL/tree/main/Problem_set_13(%238_week_sql_challenge)/part_D)
