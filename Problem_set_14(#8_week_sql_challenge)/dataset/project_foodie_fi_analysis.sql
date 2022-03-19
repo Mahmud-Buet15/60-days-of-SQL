@@ -154,7 +154,7 @@ group by 1,2
 --8. How many customers have upgraded to an annual plan in 2020?
 
 select 
-	count(distinct tbl2.customer_id)
+	count(distinct tbl2.customer_id) as total_customer
 from foodie_fi."plans" tbl1
 inner join foodie_fi.subscriptions tbl2 on tbl1.plan_id =tbl2.plan_id
 where tbl1.plan_id =3
@@ -199,8 +199,8 @@ from
 
 
 select 
-	days,
-	count(customer_id)
+	day_gaps,
+	count(customer_id) as total_customer
 from 
 (
 select
@@ -209,7 +209,7 @@ select
 		when day_gap>=31and day_gap<=60 then '31- 60 days'
 		when day_gap>=61 and day_gap<=90 then '61-90 days'
 		when day_gap>90 then '>90 days'
-	end as days
+	end as day_gaps
 from 
 	(
 		select
