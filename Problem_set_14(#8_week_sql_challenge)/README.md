@@ -43,6 +43,8 @@ select
 	count(distinct customer_id) as total_customer
 from foodie_fi.subscriptions;
 ```
+#### Solution
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_01.png)
 
 #### **Q2.What is the monthly distribution of trial plan start_date values for our dataset - use the start of the month as the group by value**
 ```sql
@@ -56,6 +58,8 @@ group by 1
 order by 1
 ;
 ```
+#### Solution
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_02.png)
 
 #### **Q3. What plan start_date values occur after the year 2020 for our dataset? Show the breakdown by count of events for each plan_name**
 ```sql
@@ -68,6 +72,8 @@ where tbl2.start_date >='2021-01-01'
 group by 1
 ;
 ```
+#### Solution
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_03.png)
 
 #### **Q4. What is the customer count and percentage of customers who have churned rounded to 1 decimal place?**
 ```sql
@@ -79,6 +85,8 @@ from foodie_fi."plans" tbl1
 inner join foodie_fi.subscriptions tbl2 on tbl1.plan_id =tbl2.plan_id
 ;
 ```
+#### Solution
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_04.png)
 
 #### **Q5. How many customers have churned straight after their initial free trial - what percentage is this rounded to the nearest whole number?**
 ```sql
