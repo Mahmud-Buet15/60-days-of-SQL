@@ -105,6 +105,8 @@ from
 ) tbl3
 ;
 ```
+#### Solution
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_05.png)
 
 #### **Q6.  What is the number and percentage of customer plans after their initial free trial?**
 ```sql
@@ -129,6 +131,8 @@ from
 ) tbl3
 ;
 ```
+#### Solution
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_06.png)
 
 #### **Q7. What is the customer count and percentage breakdown of all 5 plan_name values at 2020-12-31?**
 ```sql
@@ -175,6 +179,8 @@ from
 group by 1,2
 ;
 ```
+#### Solution
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_07.png)
 
 #### **Q8. How many customers have upgraded to an annual plan in 2020?**
 ```sql
@@ -186,6 +192,8 @@ where tbl1.plan_id =3
 and start_date<='2020-12-31'
 ;
 ```
+#### Solution
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_08.png)
 
 #### **Q9. How many days on average does it take for a customer to an annual plan from the day they join Foodie-Fi?**
 ```sql
@@ -221,6 +229,8 @@ from
 	) tbl5
 ;
 ```
+#### Solution
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_09.png)
 
 #### **Q10. Can you further breakdown this average value into 30 day periods (i.e. 0-30 days, 31-60 days etc)**
 ```sql
@@ -268,6 +278,8 @@ from
 group by 1
 ;
 ```
+#### Solution
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_10.png)
 
 #### **Q11. How many customers downgraded from a pro monthly to a basic monthly plan in 2020?**
 ```sql
@@ -286,6 +298,8 @@ where tbl2.start_date<='2020-12-31'
 where plan_id=2 and next_plan_id=1
 ;
 ```
+#### Solution
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_11.png)
 
 ### Part-02. Challenge Payment Question
 The Foodie-Fi team wants you to create a new payments table for the year 2020 that includes amounts paid by each customer in the 
@@ -348,7 +362,10 @@ from cte2
 
 select * from foodie_fi.payment_table_method_1; --4,526 rows
 ```
+#### Solution
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_part_2.png)
 
+## Alternative Solution
 #### **Using Sub-queries**
 ```sql
 
