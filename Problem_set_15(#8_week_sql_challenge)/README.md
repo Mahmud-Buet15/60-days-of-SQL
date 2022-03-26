@@ -1,434 +1,361 @@
-# Problem Set 14 
-# Case Study #3 - [Foodie-Fi](https://8weeksqlchallenge.com/case-study-3/)
-![text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/foodie.PNG)
+# Problem Set 15
+# Case Study #3 - [Data Bank](https://8weeksqlchallenge.com/case-study-4/)
+![text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/dataset/data_bank.png)
 
 # Entity Relationship Diagram
-![alt text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/ER_diagram.png)
+![alt text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/dataset/er_diagram.png)
 
 ### Problems:
-#### Part-01 . Data Analysis Questions
-1. How many customers has Foodie-Fi ever had?
-2. What is the monthly distribution of trial plan start_date values for our dataset - use the start of the month as the group by value
-3. What plan start_date values occur after the year 2020 for our dataset? Show the breakdown by count of events for each plan_name
-4. What is the customer count and percentage of customers who have churned rounded to 1 decimal place?
-5. How many customers have churned straight after their initial free trial - what percentage is this rounded to the nearest whole number?
-6. What is the number and percentage of customer plans after their initial free trial?
-7. What is the customer count and percentage breakdown of all 5 plan_name values at 2020-12-31?
-8. How many customers have upgraded to an annual plan in 2020?
-9. How many days on average does it take for a customer to an annual plan from the day they join Foodie-Fi?
-10. Can you further breakdown this average value into 30 day periods (i.e. 0-30 days, 31-60 days etc)
-11. How many customers downgraded from a pro monthly to a basic monthly plan in 2020?
+#### Part-01 . Customer Nodes Exploration
+1. How many unique nodes are there on the Data Bank system?
+2. What is the number of nodes per region?
+3. How many customers are allocated to each region?
+4. How many days on average are customers reallocated to a different node?
+5. What is the median, 80th and 95th percentile for this same reallocation days metric for each region?
 
 
-#### Part-02. Challenge Payment Question
-The Foodie-Fi team wants you to create a new payments table for the year 2020 that includes amounts paid by each customer in the 
-subscriptions table with the following requirements:
-
-1. monthly payments always occur on the same day of month as the original start_date of any monthly paid plan
-2. upgrades from basic to monthly or pro plans are reduced by the current paid amount in that month and start immediately
-3. upgrades from pro monthly to pro annual are paid at the end of the current billing period and also starts at the end of the month period
-4. once a customer churns they will no longer make payments
-
-Example outputs for this table might look like the following:
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/foodie-fi.PNG)
-
+#### Part-02. Customer Transactions
+1. What is the unique count and total amount for each transaction type?
+2. What is the average total historical deposit counts and amounts for all customers?
+3. For each month - how many Data Bank customers make more than 1 deposit and either 1 purchase or 1 withdrawal in a single month?
+4. What is the closing balance for each customer at the end of the month?
+5. What is the percentage of customers who increase their closing balance by more than 5%?
 
 # Solutions
 ### RDBMS- PostgreSQL
 
 ### Part-01 . Data Analysis Questions
-#### **Q1. How many customers has Foodie-Fi ever had?**
+#### **Q1. How many unique nodes are there on the Data Bank system?**
 ```sql
 select 
-	count(distinct customer_id) as total_customer
-from foodie_fi.subscriptions;
+	count(distinct node_id) as total_unique_nodes
+from data_bank.customer_nodes;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_01.png)
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/solution/solution%20images/solution_01.png)
 
-#### **Q2.What is the monthly distribution of trial plan start_date values for our dataset - use the start of the month as the group by value**
+#### **Q2.What is the number of nodes per region?**
 ```sql
 select 
-	date_trunc('month', tbl2.start_date)::date as start_month,
-	count(tbl1.plan_id) as total_trial_plans
-from foodie_fi."plans" tbl1
-inner join foodie_fi.subscriptions tbl2 on tbl1.plan_id =tbl2.plan_id 
-where tbl1.plan_id=0
+	region_name,
+	count(distinct node_id) as total_nodes
+from data_bank.customer_nodes tbl1
+inner join data_bank.regions tbl2 on tbl1.region_id =tbl2.region_id 
+group by 1
+;
+;
+```
+#### Solution
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/solution/solution%20images/solution_02.png)
+
+#### **Q3. How many customers are allocated to each region?**
+```sql
+select 
+	tbl3.region_name,
+	count(distinct tbl2.customer_id) as total_customers
+from data_bank.customer_transactions tbl1
+inner join data_bank.customer_nodes tbl2 on tbl1.customer_id =tbl2.customer_id 
+inner join data_bank.regions tbl3 on tbl2.region_id =tbl3.region_id 
+group by 1
+;
+```
+#### Solution
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/solution/solution%20images/solution_03.png)
+
+#### **Q4. How many days on average are customers reallocated to a different node?**
+```sql
+select 	
+	floor(avg(reallocation_day_gap)) as avg_reallocation_day_gap
+from 
+(
+select 
+	*,
+	end_date-start_date  as reallocation_day_gap
+from data_bank.customer_nodes
+) tbl1
+where reallocation_day_gap<100
+;
+```
+#### Solution
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/solution/solution%20images/solution_04.png)
+
+#### **Q5. What is the median, 80th and 95th percentile for this same reallocation days metric for each region?**
+```sql
+--creating a temp table 
+create table data_bank.region_wise_reallocation_days as 
+select 
+	region_name,
+	reallocation_day_gap,
+	occurrence,
+	sum(occurrence) over(order by reallocation_day_gap) as cumulative_occurrence,
+--	occurrence/(sum(occurrence) over(order by reallocation_day_gap))
+	sum(occurrence) over() as total_occurrence,
+	(sum(occurrence) over(order by reallocation_day_gap))/(sum(occurrence) over()) as occurrence_pct
+from 
+(
+select 
+	tbl2.region_name,
+	end_date-start_date  as reallocation_day_gap,
+	count(1) as occurrence
+from data_bank.customer_nodes tbl1
+inner join data_bank.regions tbl2 on tbl1.region_id =tbl2.region_id 
+where 1=1
+	and end_date-start_date<100
+group by 1,2
+) tbl3
+;
+select * from data_bank.region_wise_reallocation_days;
+
+--getting median ,80th percentile and 95th percentile
+
+select 
+	tbl2.*,
+	tbl3."80th_percentile_reallocation_day_gap",
+	tbl4."95th_percentile_reallocation_day_gap"
+from 
+	(
+	select 
+		region_name,
+		reallocation_day_gap as median_reallocation_day_gap
+	from 
+		(
+		select 
+			region_name,
+			reallocation_day_gap,
+			occurrence_pct,
+			min(occurrence_pct) over(partition by region_name) as min_val
+		from data_bank.region_wise_reallocation_days
+		where occurrence_pct>=0.5
+		) tbl1
+	where occurrence_pct=min_val
+	) tbl2
+inner join
+	(
+	select 
+		region_name,
+		reallocation_day_gap as "80th_percentile_reallocation_day_gap"
+	from 
+		(
+		select 
+			region_name,
+			reallocation_day_gap,
+			occurrence_pct,
+			min(occurrence_pct) over(partition by region_name) as min_val
+		from data_bank.region_wise_reallocation_days
+		where occurrence_pct>=0.8
+		) tbl1
+	where occurrence_pct=min_val
+	) tbl3 on tbl2.region_name=tbl3.region_name
+inner join 
+	(
+	select 
+		region_name,
+		reallocation_day_gap as "95th_percentile_reallocation_day_gap"
+	from 
+		(
+		select 
+			region_name,
+			reallocation_day_gap,
+			occurrence_pct,
+			min(occurrence_pct) over(partition by region_name) as min_val
+		from data_bank.region_wise_reallocation_days
+		where occurrence_pct>=0.95
+		) tbl1
+	where occurrence_pct=min_val
+	) tbl4 on tbl3.region_name=tbl4.region_name
+;
+```
+#### Solution
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/solution/solution%20images/solution_05.png)
+
+
+### Part-02. Customer Transactions
+#### **Q1. What is the unique count and total amount for each transaction type?**
+
+```sql
+select 
+	txn_type ,
+	count(distinct customer_id) as unique_customer,
+	sum(txn_amount) as total_amount
+from data_bank.customer_transactions
+group by 1;  
+```
+#### Solution
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/solution/solution%20images/solution_06.png)
+
+#### **Q2. What is the average total historical deposit counts and amounts for all customers?**
+```sql
+select 
+	floor(avg(historical_diposit_count)) as avg_historical_diposit_count,
+	round(avg(diposit_amout),0) as avg_diposit_amount
+from 
+(
+select 
+	customer_id,
+	count(txn_date) as historical_diposit_count,
+	sum(txn_amount) as diposit_amout 
+from data_bank.customer_transactions
+where txn_type ='deposit'
+group by 1
+) tbl1;
+```
+#### Solution
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/solution/solution%20images/solution_07.png)
+
+#### **Q3. For each month - how many Data Bank customers make more than 1 deposit and either 1 purchase or 1 withdrawal in a single month?**
+```sql
+
+select 
+	txn_month,
+	count(customer_id) as total_customers
+from 
+	(
+	select 
+		date_trunc('month', txn_date )::date as txn_month,
+		customer_id ,
+		count(case when txn_type='deposit' then 1 end) as total_number_of_diposit,
+		count(case when txn_type='purchase' then 1 end) as total_number_of_purchase,
+		count(case when txn_type='withdrawal' then 1 end) as total_number_of_withdrawal
+	from data_bank.customer_transactions
+	group by 1,2
+	) tbl1
+where 1=1
+and total_number_of_diposit>1 
+and (total_number_of_purchase>=1 or total_number_of_withdrawal>=1)
 group by 1
 order by 1
 ;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_02.png)
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/solution/solution%20images/solution_08.png)
 
-#### **Q3. What plan start_date values occur after the year 2020 for our dataset? Show the breakdown by count of events for each plan_name**
+#### **Q4. What is the closing balance for each customer at the end of the month?**
 ```sql
+drop table if exists data_bank.month_end_balance_temp;
+create table data_bank.month_end_balance_temp as 
 select 
-	tbl1.plan_name ,
-	count(tbl1.plan_id) as total_events
-from foodie_fi."plans" tbl1
-inner join foodie_fi.subscriptions tbl2 on tbl1.plan_id =tbl2.plan_id
-where tbl2.start_date >='2021-01-01'
-group by 1
-;
-```
-#### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_03.png)
-
-#### **Q4. What is the customer count and percentage of customers who have churned rounded to 1 decimal place?**
-```sql
-select 
-	count(distinct tbl2.customer_id) as total_customer,
-	count(distinct case when tbl1.plan_id =4 then tbl2.customer_id end) as total_churned_customer,
-	round(count(distinct case when tbl1.plan_id =4 then tbl2.customer_id end)/count(distinct tbl2.customer_id)::numeric*100,3) as churned_customer_pct
-from foodie_fi."plans" tbl1
-inner join foodie_fi.subscriptions tbl2 on tbl1.plan_id =tbl2.plan_id
-;
-```
-#### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_04.png)
-
-#### **Q5. How many customers have churned straight after their initial free trial - what percentage is this rounded to the nearest whole number?**
-```sql
-select 
-	count(distinct customer_id) as total_customer,
-	count(case when plan_id=0 and next_plan_id=4 then customer_id end) as customer_churned_after_free_trial,
-	round(count(case when plan_id=0 and next_plan_id=4 then customer_id end)/count(distinct customer_id)::numeric*100,0) as customer_churned_after_free_trial_pct
-from 
-(
-	select 
-		tbl2.customer_id ,
-		tbl1.plan_id ,
-		lead(tbl1.plan_id) over(partition by tbl2.customer_id) as next_plan_id
-	from foodie_fi."plans" tbl1
-	inner join foodie_fi.subscriptions tbl2 on tbl1.plan_id =tbl2.plan_id
-) tbl3
-;
-```
-#### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_05.png)
-
-#### **Q6.  What is the number and percentage of customer plans after their initial free trial?**
-```sql
-select 
-	count(distinct customer_id) as total_customer,
-	count(case when plan_id=0 and next_plan_id=1 then customer_id end) as trial_to_basic_monthly,
-	round(count(case when plan_id=0 and next_plan_id=1 then customer_id end)/count(distinct customer_id)::numeric*100,3) as trial_to_basic_monthly_pct,
-	count(case when plan_id=0 and next_plan_id=2 then customer_id end) as trial_to_pro_monthly,
-	round(count(case when plan_id=0 and next_plan_id=2 then customer_id end)/count(distinct customer_id)::numeric*100,3) as trial_to_pro_monthly_pct,
-	count(case when plan_id=0 and next_plan_id=3 then customer_id end) as trial_to_pro_annual,
-	round(count(case when plan_id=0 and next_plan_id=3 then customer_id end)/count(distinct customer_id)::numeric*100,3) as trial_to_pro_annual_pct,
-	count(case when plan_id=0 and next_plan_id=4 then customer_id end) as trial_to_churn,
-	round(count(case when plan_id=0 and next_plan_id=4 then customer_id end)/count(distinct customer_id)::numeric*100,3) as trial_to_churn_pct
-from 
-(
-	select 
-		tbl2.customer_id ,
-		tbl1.plan_id ,
-		lead(tbl1.plan_id) over(partition by tbl2.customer_id) as next_plan_id
-	from foodie_fi."plans" tbl1
-	inner join foodie_fi.subscriptions tbl2 on tbl1.plan_id =tbl2.plan_id
-) tbl3
-;
-```
-#### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_06.png)
-
-#### **Q7. What is the customer count and percentage breakdown of all 5 plan_name values at 2020-12-31?**
-```sql
-select 
-	'2020-12-31'::date as report_date,
-	customer_plan_status,
-	count(customer_id) as total_customer,
-	(count(customer_id)/1000::numeric)*100 as pct_of_total_customer
+	customer_id,
+	year_month,
+	total_diposit_till_last_day-total_expense_till_last_day as closing_balance
 from 
 	(
+	select 
+		customer_id ,
+		date_trunc('month', txn_date)::date as year_month,
+		max(cumulative_deposit) as total_diposit_till_last_day,
+		max(cumulative_purchase_or_withdrawal) as total_expense_till_last_day
+	from 
+		(
+		select
+			customer_id ,
+			txn_date ,
+			coalesce(sum( case when txn_type='deposit' then txn_amount end) over(partition by customer_id order by txn_date),0) as cumulative_deposit,
+			coalesce(sum(case when txn_type in ('purchase','withdrawal') then txn_amount end) over(partition by customer_id order by txn_date),0) as cumulative_purchase_or_withdrawal
+		from data_bank.customer_transactions
+		where 1=1
+		--	and customer_id =1
+		) tbl1
+	group by 1,2
+) tbl2
+order by 1,2
+;
+
+select * from data_bank.month_end_balance_temp;
+
+
+create table data_bank.month_end_balance as 
+select 
+	tbl2.customer_id,
+	tbl2.year_month,
+	coalesce(tbl3.closing_balance,lag(closing_balance) over(partition by tbl2.customer_id order by tbl2.year_month)) as closing_balance
+from 
+(
+select 
+	*,
+	generate_series(first_month,last_month,'1 Month')::date as year_month 
+from
+	(
+	select 
+		customer_id,
+		min(year_month) as first_month ,
+		max(year_month) as last_month
+	from data_bank.month_end_balance_temp
+	group by 1
+	) tbl1
+) tbl2
+left join 
+data_bank.month_end_balance_temp tbl3 on tbl2.customer_id=tbl3.customer_id and tbl2.year_month=tbl3.year_month
+;
+
+select * from data_bank.month_end_balance;
+```
+#### Solution
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/solution/solution%20images/solution_09.png)
+
+#### **Q5. What is the percentage of customers who increase their closing balance by more than 5%?**
+```sql
+--let's consider first month and last month's closing balance for analysis. Need to find the percentage of users who increased their last months closing balance 
+-- by 5% with respect to first month's closing balance
+
+select 
+	count(distinct customer_id)/(select count(distinct customer_id) from data_bank.customer_transactions)::numeric*100 as pct_of_total
+from 
+(
+select 
+	tbl3.customer_id,
+	tbl3.year_month as first_month ,
+	initial_closing_balance,
+	tbl4.year_month as last_month,
+	final_closing_balance,
+	(final_closing_balance-initial_closing_balance)/initial_closing_balance*100 as pct_increase
+from 
+	(--getting initial closing balance (first month's closing balance)
+		select 
+			customer_id,
+			year_month,
+			closing_balance as initial_closing_balance
+		from 
+		(
 		select 
 			*,
-			case when end_date>='2020-12-31' and plan_name='basic monthly' then 'basic monthly'
-				when end_date>='2020-12-31' and plan_name='pro monthly' then 'pro monthly'
-				when end_date>='2020-12-31' and plan_name='pro annual' then 'pro annual'
-				when end_date>='2020-12-31' and plan_name='trial' then 'trial'
-				when (end_date='2020-12-31' and plan_name='churn') or end_date<'2020-12-31'  then 'churn'
-			end as customer_plan_status
+			min(seq) over(partition by customer_id)  as min_month,
+			max(seq) over(partition by customer_id) as max_month
 		from 
 			(
-      select 
-        *,
-        case when plan_name='basic monthly' then start_date+30
-          when  plan_name='pro monthly' then start_date+30
-          when  plan_name='pro annual' then start_date+365
-          when  plan_name='churn' then start_date
-          when plan_name='trial' then start_date+7
-        end as end_date
-      from 
-        (-- taking the plans which start on or before 2020-12-31
-        select 
-          tbl1.plan_id ,
-          tbl1.plan_name ,
-          tbl2.customer_id ,
-          tbl2.start_date ,
-          max(tbl2.start_date) over(partition by tbl2.customer_id) as latest_plan_start_date
-        from foodie_fi."plans" tbl1
-        inner join foodie_fi.subscriptions tbl2 on tbl1.plan_id =tbl2.plan_id
-        where tbl2.start_date <='2020-12-31'
-        ) tbl3
-      where start_date=latest_plan_start_date --taking last plan for each customer
-			) tbl4
-	) tbl5
-group by 1,2
-;
-```
-#### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_07.png)
-
-#### **Q8. How many customers have upgraded to an annual plan in 2020?**
-```sql
-select 
-	count(distinct tbl2.customer_id)
-from foodie_fi."plans" tbl1
-inner join foodie_fi.subscriptions tbl2 on tbl1.plan_id =tbl2.plan_id
-where tbl1.plan_id =3
-and start_date<='2020-12-31'
-;
-```
-#### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_08.png)
-
-#### **Q9. How many days on average does it take for a customer to an annual plan from the day they join Foodie-Fi?**
-```sql
-select
-	floor(avg(day_gap)) as avg_day_gap
-from 
-	(
-		select
-			tbl3.customer_id,
-			tbl3.join_date,
-			tbl4.annual_plan_start_date,
-			tbl4.annual_plan_start_date-tbl3.join_date as day_gap
-		from 
-			(--only taking trial plans
-				select 
-					tbl2.customer_id,
-					tbl1.plan_id ,
-					tbl2.start_date as join_date
-				from foodie_fi."plans" tbl1
-				inner join foodie_fi.subscriptions tbl2 on tbl1.plan_id =tbl2.plan_id
-				where tbl1.plan_id =0
-			) tbl3
-		inner join 
-			(--only taking annual plans
-				select 
-					tbl2.customer_id,
-					tbl1.plan_id ,
-					tbl2.start_date as annual_plan_start_date
-				from foodie_fi."plans" tbl1
-				inner join foodie_fi.subscriptions tbl2 on tbl1.plan_id =tbl2.plan_id
-				where tbl1.plan_id =3
-			) tbl4 on tbl3.customer_id=tbl4.customer_id
-	) tbl5
-;
-```
-#### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_09.png)
-
-#### **Q10. Can you further breakdown this average value into 30 day periods (i.e. 0-30 days, 31-60 days etc)**
-```sql
-select 
-	days,
-	count(customer_id)
-from 
-(
-select
-	customer_id,
-	case when day_gap>=0 and day_gap<=30 then '0-30 days'
-		when day_gap>=31and day_gap<=60 then '31- 60 days'
-		when day_gap>=61 and day_gap<=90 then '61-90 days'
-		when day_gap>90 then '>90 days'
-	end as days
-from 
-	(
-		select
-			tbl3.customer_id,
-			tbl3.join_date,
-			tbl4.annual_plan_start_date,
-			tbl4.annual_plan_start_date-tbl3.join_date as day_gap
-		from 
-			(--only taking trial plans
-				select 
-					tbl2.customer_id,
-					tbl1.plan_id ,
-					tbl2.start_date as join_date
-				from foodie_fi."plans" tbl1
-				inner join foodie_fi.subscriptions tbl2 on tbl1.plan_id =tbl2.plan_id
-				where tbl1.plan_id =0
-			) tbl3
-		inner join 
-			(--only taking annual plans
-				select 
-					tbl2.customer_id,
-					tbl1.plan_id ,
-					tbl2.start_date as annual_plan_start_date
-				from foodie_fi."plans" tbl1
-				inner join foodie_fi.subscriptions tbl2 on tbl1.plan_id =tbl2.plan_id
-				where tbl1.plan_id =3
-			) tbl4 on tbl3.customer_id=tbl4.customer_id
-	) tbl5
-) tbl6
-group by 1
-;
-```
-#### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_10.png)
-
-#### **Q11. How many customers downgraded from a pro monthly to a basic monthly plan in 2020?**
-```sql
-select 
-	count(distinct customer_id) as total_customer_downgraded
-from 
-(
-select 
-	tbl2.customer_id ,
-	tbl2.plan_id ,
-	lead(tbl2.plan_id ) over(partition by tbl2.customer_id) as next_plan_id
-from foodie_fi."plans" tbl1
-inner join foodie_fi.subscriptions tbl2 on tbl1.plan_id =tbl2.plan_id
-where tbl2.start_date<='2020-12-31'
-) tbl3
-where plan_id=2 and next_plan_id=1
-;
-```
-#### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_11.png)
-
-### Part-02. Challenge Payment Question
-The Foodie-Fi team wants you to create a new payments table for the year 2020 that includes amounts paid by each customer in the 
-subscriptions table with the following requirements:
-
-1. monthly payments always occur on the same day of month as the original start_date of any monthly paid plan
-2. upgrades from basic to monthly or pro plans are reduced by the current paid amount in that month and start immediately
-3. upgrades from pro monthly to pro annual are paid at the end of the current billing period and also starts at the end of the month period
-4. once a customer churns they will no longer make payments
-
-#### **Using CTE (Common Table Expression)**
-```sql
-create table foodie_fi.payment_table_method_1 as 
-with cte as 
-	( 
+			select 
+				*,
+				row_number() over(partition by customer_id order by year_month) as seq
+			from data_bank.month_end_balance 
+			) tbl1
+		) tbl2
+		where seq=min_month
+	) tbl3
+inner join 
+	(--getting final closing balance (last month's closing balance)
 	select 
-		tbl2.customer_id,
-		tbl1.plan_id ,
-		tbl1.plan_name ,
-		tbl2.start_date,
-		tbl1.price ,
-		lead(tbl2.start_date) over(partition by tbl2.customer_id order by tbl2.start_date)  as plan_end_date,
-		lead(tbl1.plan_name) over(partition by tbl2.customer_id order by tbl2.start_date) as next_plan,
-		coalesce(lead(tbl2.start_date) over(partition by tbl2.customer_id order by tbl2.start_date), '2020-12-31'::date) as till_date    --in case users didn't changed their plan
-	from foodie_fi."plans" tbl1
-	inner join foodie_fi.subscriptions tbl2 on tbl1.plan_id =tbl2.plan_id
-	where 1=1
-	and start_date<='2020-12-31'
-	and tbl1.plan_id!=0  -- ignoring trial plans (as it's not related to payment)
-	order by 1,2
-	) ,
-	
-cte2 as 
+		customer_id,
+		year_month,
+		closing_balance as final_closing_balance
+	from 
 	(
 	select 
 		*,
-		generate_series(start_date,till_date,'1 Month')::date as payment_date
-	from cte
-	where plan_name in ('basic monthly','pro monthly')
-	
-	union all 
-	
-	select 
-		*,
-		generate_series(start_date,till_date,'1 Year')::date as payment_date
-	from cte
-	where plan_name in ('pro annual')
-	order by customer_id,payment_date
-	) 
-	
-select 
-	customer_id,
-	plan_id,
-	plan_name,
-	payment_date,
-	price,
-	row_number() over(partition by customer_id order by payment_date) as payment_order
-from cte2
-;
-
-select * from foodie_fi.payment_table_method_1; --4,526 rows
-```
-#### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_part_2.png)
-
-## Alternative Solution
-#### **Using Sub-queries**
-```sql
-
-create table foodie_fi.payment_table_method_2 as 
-select 
-	customer_id,
-	plan_id,
-	plan_name,
-	payment_date,
-	price,
-	row_number() over(partition by customer_id order by payment_date) as payment_order
-from 
-	(
-	select 
-		*,
-		generate_series(start_date,till_date,'1 Month')::date as payment_date
+		min(seq) over(partition by customer_id)  as min_month,
+		max(seq) over(partition by customer_id) as max_month
 	from 
 		(
 		select 
-			tbl2.customer_id,
-			tbl1.plan_id ,
-			tbl1.plan_name ,
-			tbl2.start_date,
-			tbl1.price ,
-			lead(tbl2.start_date) over(partition by tbl2.customer_id order by tbl2.start_date)  as plan_end_date,
-			lead(tbl1.plan_name) over(partition by tbl2.customer_id order by tbl2.start_date) as next_plan,
-			coalesce(lead(tbl2.start_date) over(partition by tbl2.customer_id order by tbl2.start_date), '2020-12-31'::date) as till_date  --in case users didn't changed their plan
-		from foodie_fi."plans" tbl1
-		inner join foodie_fi.subscriptions tbl2 on tbl1.plan_id =tbl2.plan_id
-		where 1=1
-		and start_date<='2020-12-31'
-		and tbl1.plan_id!=0 -- ignoring trial plans (as it's not related to payment)
-		order by 1,2
-		) tbl3
-	where plan_name in ('basic monthly','pro monthly')
-	
-	union all 
-	
-	select 
-		*,
-		generate_series(start_date,till_date,'1 Year')::date as payment_date
-	from 
-		(
-		select 
-			tbl2.customer_id,
-			tbl1.plan_id ,
-			tbl1.plan_name ,
-			tbl2.start_date,
-			tbl1.price ,
-			lead(tbl2.start_date) over(partition by tbl2.customer_id order by tbl2.start_date)  as plan_end_date,
-			lead(tbl1.plan_name) over(partition by tbl2.customer_id order by tbl2.start_date) as next_plan,
-			coalesce(lead(tbl2.start_date) over(partition by tbl2.customer_id order by tbl2.start_date), '2020-12-31'::date) as till_date  --in case users didn't changed their plan
-		from foodie_fi."plans" tbl1
-		inner join foodie_fi.subscriptions tbl2 on tbl1.plan_id =tbl2.plan_id
-		where 1=1
-		and start_date<='2020-12-31'
-		and tbl1.plan_id!=0   -- ignoring trial plans (as it's not related to payment)
-		order by 1,2
-		) tbl4
-	where plan_name in ('pro annual')
-	) tbl5
-order by customer_id,payment_date
+			*,
+			row_number() over(partition by customer_id order by year_month) as seq
+		from data_bank.month_end_balance 
+		) tbl1
+	) tbl2
+	where seq=max_month
+	) tbl4 on tbl3.customer_id=tbl4.customer_id
+where final_closing_balance>0
+) tbl5
+where pct_increase>5
 ;
-
-select * from foodie_fi.payment_table_method_2; --4,526 rows
 ```
+#### Solution
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/solution/solution%20images/solution_10.png)
