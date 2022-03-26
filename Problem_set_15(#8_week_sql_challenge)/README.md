@@ -1,5 +1,5 @@
 # Problem Set 15
-# Case Study #3 - [Data Bank](https://8weeksqlchallenge.com/case-study-4/)
+# Case Study #4 - [Data Bank](https://8weeksqlchallenge.com/case-study-4/)
 ![text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/dataset/data_bank.png)
 
 # Entity Relationship Diagram
