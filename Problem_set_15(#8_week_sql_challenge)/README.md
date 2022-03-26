@@ -24,7 +24,7 @@
 # Solutions
 ### RDBMS- PostgreSQL
 
-### Part-01 . Data Analysis Questions
+### Part-01 . Customer Nodes Exploration
 #### **Q1. How many unique nodes are there on the Data Bank system?**
 ```sql
 select 
