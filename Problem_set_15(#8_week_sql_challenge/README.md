@@ -1,9 +1,9 @@
 # Problem Set 15
 # Case Study #4 - [Data Bank](https://8weeksqlchallenge.com/case-study-4/)
-![text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/dataset/data_bank.png)
+![text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge/dataset/data_bank.png )
 
 # Entity Relationship Diagram
-![alt text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/dataset/er_diagram.png)
+![alt text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge/dataset/er_diagram.png )
 
 ### Problems:
 #### Part-01 . Customer Nodes Exploration
@@ -32,7 +32,7 @@ select
 from data_bank.customer_nodes;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/solution/solution%20images/solution_01.png)
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge/solution/solution%20images/solution_01.png )
 
 #### **Q2.What is the number of nodes per region?**
 ```sql
@@ -46,7 +46,7 @@ group by 1
 ;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/solution/solution%20images/solution_02.png)
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge/solution/solution%20images/solution_02.png )
 
 #### **Q3. How many customers are allocated to each region?**
 ```sql
@@ -60,7 +60,7 @@ group by 1
 ;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/solution/solution%20images/solution_03.png)
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge/solution/solution%20images/solution_03.png )
 
 #### **Q4. How many days on average are customers reallocated to a different node?**
 ```sql
@@ -77,7 +77,7 @@ where reallocation_day_gap<100
 ;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/solution/solution%20images/solution_04.png)
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge/solution/solution%20images/solution_04.png )
 
 #### **Q5. What is the median, 80th and 95th percentile for this same reallocation days metric for each region?**
 ```sql
@@ -166,7 +166,7 @@ inner join
 ;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/solution/solution%20images/solution_05.png)
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge/solution/solution%20images/solution_05.png )
 
 
 ### Part-02. Customer Transactions
@@ -181,7 +181,7 @@ from data_bank.customer_transactions
 group by 1;  
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/solution/solution%20images/solution_06.png)
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge/solution/solution%20images/solution_06.png )
 
 #### **Q2. What is the average total historical deposit counts and amounts for all customers?**
 ```sql
@@ -200,7 +200,7 @@ group by 1
 ) tbl1;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/solution/solution%20images/solution_07.png)
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge/solution/solution%20images/solution_07.png )
 
 #### **Q3. For each month - how many Data Bank customers make more than 1 deposit and either 1 purchase or 1 withdrawal in a single month?**
 ```sql
@@ -227,7 +227,7 @@ order by 1
 ;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/solution/solution%20images/solution_08.png)
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge/solution/solution%20images/solution_08.png )
 
 #### **Q4. What is the closing balance for each customer at the end of the month?**
 ```sql
@@ -290,7 +290,7 @@ data_bank.month_end_balance_temp tbl3 on tbl2.customer_id=tbl3.customer_id and t
 select * from data_bank.month_end_balance;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/solution/solution%20images/solution_09.png)
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge/solution/solution%20images/solution_09.png )
 
 #### **Q5. What is the percentage of customers who increase their closing balance by more than 5%?**
 ```sql
@@ -358,4 +358,4 @@ where pct_increase>5
 ;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge)/solution/solution%20images/solution_10.png)
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge/solution/solution%20images/solution_10.png )
