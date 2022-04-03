@@ -136,7 +136,7 @@ from
 ;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge/solution/solution%20images/solution_01.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_01.png )
 
 
 ### Part-02. Data Exploration
@@ -156,7 +156,7 @@ from data_mart.clean_weekly_sales
 group by 1; 
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge/solution/solution%20images/solution_06.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_02.png )
 
 It seems Monday is being used for each week_day value
 
@@ -169,7 +169,7 @@ group by 1
 order by 1;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge/solution/solution%20images/solution_07.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_03.png )
 
 Looks like week number 1-12 and 37-52 are missing
 
@@ -184,7 +184,7 @@ group by 1
 order by 1;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge/solution/solution%20images/solution_08.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_04.png )
 
 #### **Q4. What is the total sales for each region for each month?**
 ```sql
@@ -196,7 +196,7 @@ group by 1
 order by 1;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge/solution/solution%20images/solution_09.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_05.png )
 
 #### **Q5. What is the total count of transactions for each platform?**
 ```sql
@@ -208,7 +208,7 @@ group by 1
 ;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge/solution/solution%20images/solution_10.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_06.png )
 
 
 #### **Q6. What is the percentage of sales for Retail vs Shopify for each month?**
@@ -232,7 +232,7 @@ from
 ;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge/solution/solution%20images/solution_10.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_07.png )
 
 
 #### **Q7. What is the percentage of sales by demographic for each year in the dataset?**
@@ -257,7 +257,7 @@ order by 1
 ;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge/solution/solution%20images/solution_10.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_08.png )
 
 #### **Q8. Which age_band and demographic values contribute the most to Retail sales?**
 **Solution for age_band**
@@ -274,7 +274,7 @@ order by 2 desc
 ;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge/solution/solution%20images/solution_10.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_09a.png )
 
 Retirees contribute most From age_band . 
 
@@ -292,12 +292,12 @@ order by 2 desc
 ;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge/solution/solution%20images/solution_10.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_09b.png )
 
 Families contribute most From demographic
 
-#### **Q6. Can we use the avg_transaction column to find the average transaction size for each year for Retail vs Shopify? If not - how would you calculate it instead?**
-No we cannot use the avg_transaction column to find the average transaction size
+#### **Q9. Can we use the avg_transaction column to find the average transaction size for each year for Retail vs Shopify? If not - how would you calculate it instead?
+**Solution: No we cannot use the avg_transaction column to find the average transaction size
 
 ```sql
 select 
@@ -310,7 +310,7 @@ order by 1
 ;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_15(%238_week_sql_challenge/solution/solution%20images/solution_10.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/Screenshot_10.png )
 
 
 
