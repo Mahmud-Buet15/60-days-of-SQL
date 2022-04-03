@@ -158,7 +158,7 @@ group by 1;
 #### Solution
 ![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_02.png )
 
-It seems Monday is being used for each week_day value
+It seems **Monday** is being used for each week_day value
 
 #### **Q2. What range of week numbers are missing from the dataset?**
 ```sql
@@ -171,7 +171,7 @@ order by 1;
 #### Solution
 ![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_03.png )
 
-Looks like week number 1-12 and 37-52 are missing
+Looks like **week number 1-12 and 37-52** are missing
 
 #### **Q3. How many total transactions were there for each year in the dataset?**
 ```sql
@@ -260,7 +260,7 @@ order by 1
 ![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_08.png )
 
 #### **Q8. Which age_band and demographic values contribute the most to Retail sales?**
-**Solution for age_band**
+**Solution Part 01: For age_band**
 ```sql
 select 
 	age_band,
@@ -273,12 +273,12 @@ group by 1
 order by 2 desc
 ;
 ```
-#### Solution
+**Retirees** contribute most From age_band . 
+
 ![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_09a.png )
 
-Retirees contribute most From age_band . 
 
-**Solution for demographic**
+**Solution Part 02:For demographic**
 ```sql
 select 
 	demographic,
@@ -291,13 +291,14 @@ group by 1
 order by 2 desc
 ;
 ```
-#### Solution
+**Families** contribute most From demographic
+
 ![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_09b.png )
 
-Families contribute most From demographic
+
 
 #### **Q9. Can we use the avg_transaction column to find the average transaction size for each year for Retail vs Shopify? If not - how would you calculate it instead?**
-**Solution: No we cannot use the avg_transaction column to find the average transaction size**
+**Solution:** No we cannot use the avg_transaction column to find the average transaction size
 
 ```sql
 select 
@@ -313,7 +314,6 @@ order by 1
 ![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/Screenshot_10.png )
 
 
-#### Part-
 ### Part-03. Before & After Analysis
 #### **Q1. What is the total sales for the 4 weeks before and after 2020-06-15? What is the growth or reduction rate in actual values and percentage of sales?**
 
@@ -366,7 +366,7 @@ and ((week_date>='2020-06-15'::date-interval '12 week' and week_date<'2020-06-15
 
 #### **Q3. How do the sale metrics for these 2 periods before and after compare with the previous years in 2018 and 2019?** 
 
-**comparison of before change period of 2020 with similar period of 2018 and 2019**
+**Solution Part 01: Comparison of before change period of 2020 with similar period of 2018 and 2019**
 ```sql
 select 
 	before_change_2020 as "Sale 2020 (before change)",
@@ -391,11 +391,10 @@ from
 	) tbl1
 ;
 ```
-#### Solution
 ![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_part_3_03a.png )
 
 
-**comparison of after change period of 2020 with similar period of 2018 and 2019**
+**Solution Psrt 02: Comparison of after change period of 2020 with similar period of 2018 and 2019**
 ```sql
 select 
 	after_change_2020 as "Sale 2020 (after change)",
