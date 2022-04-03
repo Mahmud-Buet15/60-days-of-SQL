@@ -72,6 +72,7 @@ where tbl2.start_date >='2021-01-01'
 group by 1
 ;
 ```
+
 #### Solution
 ![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_14(%238_week_sql_challenge)/dataset/solution%20images/solution_03.png)
 
