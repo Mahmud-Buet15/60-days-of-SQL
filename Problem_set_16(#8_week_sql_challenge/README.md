@@ -296,8 +296,8 @@ order by 2 desc
 
 Families contribute most From demographic
 
-#### **Q9. Can we use the avg_transaction column to find the average transaction size for each year for Retail vs Shopify? If not - how would you calculate it instead?
-**Solution: No we cannot use the avg_transaction column to find the average transaction size
+#### **Q9. Can we use the avg_transaction column to find the average transaction size for each year for Retail vs Shopify? If not - how would you calculate it instead?**
+**Solution: No we cannot use the avg_transaction column to find the average transaction size**
 
 ```sql
 select 
@@ -312,5 +312,116 @@ order by 1
 #### Solution
 ![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/Screenshot_10.png )
 
+
+#### Part-
+### Part-03. Before & After Analysis
+#### **Q1. What is the total sales for the 4 weeks before and after 2020-06-15? What is the growth or reduction rate in actual values and percentage of sales?**
+
+```sql
+select 
+	before_change as "Sale before change",
+	after_change as "Sale after change",
+	before_change-after_change as "Reduction",
+	round((before_change-after_change)/before_change::numeric*100,2)||'%' as "Reduction Rate"
+from 
+(
+select 
+	sum(case when week_date>='2020-06-15'::date-interval '4 week' and week_date<'2020-06-15' then sales end) as before_change,
+	sum(case when week_date>='2020-06-15' and week_date<'2020-06-15'::date+interval '4 week' then sales end) as after_change
+from data_mart.clean_weekly_sales
+where 1=1
+and ((week_date>='2020-06-15'::date-interval '4 week' and week_date<'2020-06-15')
+	or  (week_date>='2020-06-15' and week_date<'2020-06-15'::date+interval '4 week'))
+) tbl1
+;
+```
+#### Solution
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_part_3_01.png )
+
+
+
+#### **Q2. What about the entire 12 weeks before and after??** 
+
+```sql
+select 
+	before_change as "Sale before change",
+	after_change as "Sale after change",
+	before_change-after_change as "Reduction",
+	round((before_change-after_change)/before_change::numeric*100,2)||'%' as "Reduction Rate"
+from 
+(
+select 
+	sum(case when week_date>='2020-06-15'::date-interval '12 week' and week_date<'2020-06-15' then sales end) as before_change,
+	sum(case when week_date>='2020-06-15' and week_date<'2020-06-15'::date+interval '12 week' then sales end) as after_change
+from data_mart.clean_weekly_sales
+where 1=1
+and ((week_date>='2020-06-15'::date-interval '12 week' and week_date<'2020-06-15')
+	or  (week_date>='2020-06-15' and week_date<'2020-06-15'::date+interval '12 week'))
+) tbl1
+;
+```
+#### Solution
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_part_3_02.png )
+
+
+#### **Q3. How do the sale metrics for these 2 periods before and after compare with the previous years in 2018 and 2019?** 
+
+**comparison of before change period of 2020 with similar period of 2018 and 2019**
+```sql
+select 
+	before_change_2020 as "Sale 2020 (before change)",
+	similar_weeks_2019 as "Sale 2019 (similar week)",
+	before_change_2020-similar_weeks_2019 as "Increase in 2020",
+	round((before_change_2020-similar_weeks_2019)/similar_weeks_2019::numeric*100,2)||'%' as "Increase Rate",
+	similar_weeks_2018 as "Sale 2018 (similar week)",
+	before_change_2020-similar_weeks_2018 as "Increase in 2020",
+	round((before_change_2020-similar_weeks_2018)/similar_weeks_2018::numeric*100,2)||'%' as "Increase Rate"
+from 
+	(
+	select 
+		sum(case when week_date>='2020-06-15'::date-interval '12 week' and week_date<'2020-06-15' then sales end) as before_change_2020,
+		sum(case when week_date>='2019-03-25' and week_date<'2019-03-25'::date+interval '12 week' then sales end) as similar_weeks_2019,
+		sum(case when week_date>='2018-03-26' and week_date<'2018-03-26'::date+interval '12 week' then sales end) as similar_weeks_2018
+	from data_mart.clean_weekly_sales
+	where 1=1
+	and (	(week_date>='2020-06-15'::date-interval '12 week' and week_date<'2020-06-15')
+			or (week_date>='2019-03-25' and week_date<'2019-03-25'::date+interval '12 week')
+			or (week_date>='2018-03-26' and week_date<'2018-03-26'::date+interval '12 week')
+		)
+	) tbl1
+;
+```
+#### Solution
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_part_3_03a.png )
+
+
+**comparison of after change period of 2020 with similar period of 2018 and 2019**
+```sql
+select 
+	after_change_2020 as "Sale 2020 (after change)",
+	similar_weeks_2019 as "Sale 2019 (similar week)",
+	after_change_2020-similar_weeks_2019 as "Increase in 2020",
+	round((after_change_2020-similar_weeks_2019)/similar_weeks_2019::numeric*100,2)||'%' as "Increase Rate",
+	similar_weeks_2018 as "Sale 2018 (similar week)",
+	after_change_2020-similar_weeks_2018 as "Increase in 2020",
+	round((after_change_2020-similar_weeks_2018)/similar_weeks_2018::numeric*100,2)||'%' as "Increase Rate"
+from 
+	(
+	select 
+		sum(case when week_date>='2020-06-15' and week_date<'2020-06-15'::date+interval '12 week' then sales end) as after_change_2020,
+		sum(case when week_date>'2019-09-02'::date- interval '12 week' and week_date<='2019-09-02' then sales end) as similar_weeks_2019,
+		sum(case when week_date>'2018-09-03'::date- interval '12 week' and week_date<='2018-09-03' then sales end) as similar_weeks_2018
+	from data_mart.clean_weekly_sales
+	where 1=1
+	and (	(week_date>='2020-06-15' and week_date<'2020-06-15'::date+interval '12 week')
+			or (week_date>'2019-09-02'::date- interval '12 week' and week_date<='2019-09-02')
+			or (week_date>'2018-09-03'::date- interval '12 week' and week_date<='2018-09-03')
+		)
+	) tbl1
+;
+
+```
+#### Solution
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_part_3_3b.png )
 
 
