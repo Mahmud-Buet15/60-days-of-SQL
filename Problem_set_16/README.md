@@ -88,7 +88,7 @@ In a single query, perform the following operations and generate a new table in 
 
 |segment    |demographic  |
 |-----------|-------------|
-|1          |YCouples 	  |
+|1          |Couples 	  |
 |2          |Families     |
 
 7. Ensure all null string values with an "unknown" string value in the original segment column as well as the new age_band and demographic columns
