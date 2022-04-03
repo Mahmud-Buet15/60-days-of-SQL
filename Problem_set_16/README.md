@@ -1,9 +1,9 @@
 # Problem Set 16
 # Case Study #5 - [Data Mart](https://8weeksqlchallenge.com/case-study-5/)
-![text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/dataset/data_mart_cover.png )
+![text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16/dataset/data_mart_cover.png )
 
 # Entity Relationship Diagram
-![alt text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/dataset/data_mart_er_diagram.png )
+![alt text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16/dataset/data_mart_er_diagram.png )
 
 ### Problems:
 #### Part-01. Data Cleansing Steps
@@ -136,7 +136,7 @@ from
 ;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_01.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16/solution/solution%20images/solution_01.png )
 
 
 ### Part-02. Data Exploration
@@ -156,7 +156,7 @@ from data_mart.clean_weekly_sales
 group by 1; 
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_02.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16/solution/solution%20images/solution_02.png )
 
 It seems **Monday** is being used for each week_day value
 
@@ -169,7 +169,7 @@ group by 1
 order by 1;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_03.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16/solution/solution%20images/solution_03.png )
 
 Looks like **week number 1-12 and 37-52** are missing
 
@@ -184,7 +184,7 @@ group by 1
 order by 1;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_04.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16/solution/solution%20images/solution_04.png )
 
 #### **Q4. What is the total sales for each region for each month?**
 ```sql
@@ -196,7 +196,7 @@ group by 1
 order by 1;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_05.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16/solution/solution%20images/solution_05.png )
 
 #### **Q5. What is the total count of transactions for each platform?**
 ```sql
@@ -208,7 +208,7 @@ group by 1
 ;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_06.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16/solution/solution%20images/solution_06.png )
 
 
 #### **Q6. What is the percentage of sales for Retail vs Shopify for each month?**
@@ -232,7 +232,7 @@ from
 ;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_07.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16/solution/solution%20images/solution_07.png )
 
 
 #### **Q7. What is the percentage of sales by demographic for each year in the dataset?**
@@ -257,7 +257,7 @@ order by 1
 ;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_08.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16/solution/solution%20images/solution_08.png )
 
 #### **Q8. Which age_band and demographic values contribute the most to Retail sales?**
 **Solution Part 01: For age_band**
@@ -275,7 +275,7 @@ order by 2 desc
 ```
 **Retirees** contribute most From age_band . 
 
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_09a.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16/solution/solution%20images/solution_09a.png )
 
 
 **Solution Part 02:For demographic**
@@ -293,7 +293,7 @@ order by 2 desc
 ```
 **Families** contribute most From demographic
 
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_09b.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16/solution/solution%20images/solution_09b.png )
 
 
 
@@ -311,7 +311,7 @@ order by 1
 ;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/Screenshot_10.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16/solution/solution%20images/Screenshot_10.png )
 
 
 ### Part-03. Before & After Analysis
@@ -336,7 +336,7 @@ and ((week_date>='2020-06-15'::date-interval '4 week' and week_date<'2020-06-15'
 ;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_part_3_01.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16/solution/solution%20images/solution_part_3_01.png )
 
 
 
@@ -361,7 +361,7 @@ and ((week_date>='2020-06-15'::date-interval '12 week' and week_date<'2020-06-15
 ;
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_part_3_02.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16/solution/solution%20images/solution_part_3_02.png )
 
 
 #### **Q3. How do the sale metrics for these 2 periods before and after compare with the previous years in 2018 and 2019?** 
@@ -391,7 +391,7 @@ from
 	) tbl1
 ;
 ```
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_part_3_03a.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16/solution/solution%20images/solution_part_3_03a.png )
 
 
 **Solution Psrt 02: Comparison of after change period of 2020 with similar period of 2018 and 2019**
@@ -421,6 +421,6 @@ from
 
 ```
 #### Solution
-![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16(%238_week_sql_challenge/solution/solution%20images/solution_part_3_03b.png )
+![alt_text](https://github.com/Mahmud-Buet15/60-days-of-SQL/blob/main/Problem_set_16/solution/solution%20images/solution_part_3_03b.png )
 
 
